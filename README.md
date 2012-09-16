@@ -5,6 +5,28 @@ asas mobile application
 ## Install
 
 ```bash
+$> cp config.sample.js config.js
+$> vi config.js
+```
+
+```js
+module.exports = {
+
+    port: 3001,
+
+    db: {
+        host: 'DB_HOST',
+        user: 'DB_USER',
+        database: 'DB_NAME',
+        password: 'DB_PASSWORD'
+    }
+
+};
+```
+
+## Launch
+
+```bash
 $> node app.js
 ```
 
