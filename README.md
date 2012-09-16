@@ -67,6 +67,15 @@ $> node app.js
 }
 ```
 
+### Logout
+`GET /api/logout`  
+
+```json
+{
+    "success": true
+}
+```
+
 ### Teams
 `GET /api/teams`  
 

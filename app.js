@@ -37,7 +37,6 @@ app.configure('development', function() {
 app.get('/', routes.index);
 
 app.post('/api/login', user.login);
-app.get('/api/logout', user.logout);
 app.post('/api/register', user.register);
 app.get('/api/logout', checkSession, user.logout);
 app.get('/api/teams/:id/events', checkSession, team.events);
