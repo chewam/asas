@@ -72,14 +72,14 @@ $> node app.js
 
 ```json
 [{
-    id: 1,
-    name: "6 - Girls"
+    "id": 1,
+    "name": "6 - Girls"
 }, {
-    id: 2,
-    name: "6 - Boys"
+    "id": 2,
+    "name": "6 - Boys"
 }, {
-    id: 3,
-    name: "4 - Mixed"
+    "id": 3,
+    "name": "4 - Mixed"
 }]
 ```
 
@@ -90,13 +90,13 @@ $> node app.js
 
 ```json
 [{
-    id: 35,
-    name: "Wednesday training",
-    date: "2012-09-16T20:39:07.000Z"
+    "id": 35,
+    "name": "Wednesday training",
+    "date": "2012-09-16T20:39:07.000Z"
 }, {
-    id: 36,
-    name: "Saturday match",
-    date: "2012-09-16T20:39:07.000Z"
+    "id": 36,
+    "name": "Saturday match",
+    "date": "2012-09-16T20:39:07.000Z"
 }]
 ```
 
@@ -107,12 +107,12 @@ $> node app.js
 
 ```json
 [{
-    id: 35,
-    name: "Billy",
-    admin: 0
+    "id": 35,
+    "name": "Billy",
+    "admin": 0
 }, {
-    id: 36,
-    name: "John",
-    admin: 1
+    "id": 36,
+    "name": "John",
+    "admin": 1
 }]
 ```
