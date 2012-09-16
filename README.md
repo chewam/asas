@@ -4,8 +4,8 @@ asas mobile application
 
 ## Install
 
-```bash
-node app.js
-```
+`$> node app.js`
+
 ## API
 
+Login: `/api/login`
