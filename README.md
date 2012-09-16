@@ -4,14 +4,14 @@ asas mobile application
 
 ## Install
 
-`
+```bash
 $> node app.js
-`
+```
 
 ## API
 
 Login: `/api/login`
-`
+```json
 {
     "success": true/false
     "user": {
@@ -20,4 +20,4 @@ Login: `/api/login`
         "admin": true/false
     }
 }
-`
+```
