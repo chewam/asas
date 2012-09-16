@@ -10,14 +10,37 @@ $> node app.js
 
 ## API
 
-Login: `/api/login`
+### Login
+`POST /api/login`  
+
+ * login (String)
+ * password (String)
+
 ```json
 {
-    "success": true/false
+    "success": true,
     "user": {
         "id": 42,
         "name": "john",
-        "admin": true/false
+        "admin": false
+    }
+}
+```
+
+### Register
+`POST /api/register`  
+
+ * login (String)
+ * email (String)
+ * password (String)
+
+```json
+{
+    "success": true,
+    "user": {
+        "id": 42,
+        "name": "john",
+        "admin": false
     }
 }
 ```
