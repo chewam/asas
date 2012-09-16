@@ -48,6 +48,15 @@ html(manifest="", lang="en-US")
                     opacity: 0.8
                 }
             }
+        - if (user)
+            script
+                var _USER_ = {
+                    id: #{user.id},
+                    name: '#{user.name}'
+                };
+        - else
+            script
+                var _USER_ = null;
         script(id="microloader", type="text/javascript", src="/sdk/microloader/development.js")
     body
         div#appLoadingIndicator

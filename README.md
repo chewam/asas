@@ -1,6 +1,6 @@
 # ASAS
 
-asas mobile application
+ASAS mobile application
 
 ## Install
 

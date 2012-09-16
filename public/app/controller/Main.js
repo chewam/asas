@@ -26,7 +26,8 @@ Ext.define('Asas.controller.Main', {
         console.log('init main');
         this.getApplication().on({
             scope: this,
-            auth: this.onAuth
+            auth: this.onAuth,
+            logout: this.onLogout
         });
     },
 
@@ -39,6 +40,10 @@ Ext.define('Asas.controller.Main', {
         Ext.Viewport.add(this.getMainPanel());
         Ext.Viewport.setActiveItem(1);
         this.loadTeams();
+    },
+
+    onLogout: function() {
+        Ext.Viewport.removeAll();
     },
 
     onOptionsButtonTap: function(button) {

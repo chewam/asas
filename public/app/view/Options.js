@@ -22,6 +22,10 @@ Ext.define("Asas.view.Options", {
             xtype: 'button',
             action: 'jointeam',
             text: 'devenir membre de l\'équipe'
+        }, {
+            xtype: 'button',
+            action: 'logout',
+            text: 'logout'
         }]
     }
 

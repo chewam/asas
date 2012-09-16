@@ -81,16 +81,3 @@ exports.join = function(req, res) {
 
     db.end();
 };
-
-// exports.join = function(req, res) {
-//     var id = req.session.user.id,
-//         db = require('../utils/db')(),
-//         query = 'UPDATE members SET ? WHERE id = ?';
-
-//     db.query(query, [{teamId: req.params.id}, id], function(err, rows, fields) {
-//         if (err) throw err;
-//         res.json({success: true});
-//     });
-
-//     db.end();
-// };

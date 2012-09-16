@@ -7,7 +7,11 @@ Ext.define('Asas.controller.Auth', {
         views: ['Auth'],
 
         refs: {
-            authPanel: 'asas_auth',
+            authPanel: {
+                autoCreate: true,
+                xtype: 'asas_auth',
+                selector: 'viewport > asas_auth'
+            },
             loginPanel: 'asas_auth_login',
             registerPanel: 'asas_auth_register'
         },
@@ -24,6 +28,9 @@ Ext.define('Asas.controller.Auth', {
             },
             'asas_auth button[action=showregister]': {
                 tap: 'onShowRegisterButtonTap'
+            },
+            'asas_options button[action=logout]': {
+                tap: 'onLogoutButtonTap'
             }
         }
 
@@ -35,11 +42,22 @@ Ext.define('Asas.controller.Auth', {
 
     launch: function() {
         console.log('launch auth');
-        Ext.Viewport.add(Ext.create('Asas.view.Auth'));
+        if (Asas.utils.Config.getUser()) {
+            this.getApplication().fireEvent('auth');
+        } else {
+            this.getApplication().fireEvent('logout');
+            Ext.Viewport.add(this.getAuthPanel());
+            Ext.Viewport.setActiveItem(0);
+        }
     },
 
     onLoginButtonTap: function() {
         this.login();
+    },
+
+    onLogoutButtonTap: function(button) {
+        button.up('panel').hide();
+        this.logout();
     },
 
     onRegisterButtonTap: function() {
@@ -83,7 +101,6 @@ Ext.define('Asas.controller.Auth', {
     register: function() {
         Ext.Ajax.request({
             scope: this,
-            // url: '/api/register',
             url: Asas.utils.Config.getApi().register,
             params: this.getRegisterPanel().getValues(),
             success: function(response) {
@@ -93,6 +110,17 @@ Ext.define('Asas.controller.Auth', {
                     Asas.utils.Config.setUser(data.user);
                     this.getApplication().fireEvent('auth');
                 }
+            }
+        });
+    },
+
+    logout: function() {
+        Ext.Ajax.request({
+            scope: this,
+            url: Asas.utils.Config.getApi().logout,
+            callback: function(response) {
+                Asas.utils.Config.setUser(null);
+                this.launch();
             }
         });
     }
