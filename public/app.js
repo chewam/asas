@@ -28,7 +28,8 @@ Ext.application({
     ],
 
     viewport: {
-        layout: 'card'
+        layout: 'card',
+        autoMaximize: true
         // items: [{
         //     xtype: 'asas_auth'
         // }]
