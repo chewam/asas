@@ -5,6 +5,9 @@ ASAS mobile application
 ## Install
 
 ```bash
+$> git clone git@github.com:goldledoigt/asas.git
+$> cd asas
+$> npm install
 $> cp config.sample.js config.js
 $> vi config.js
 ```
