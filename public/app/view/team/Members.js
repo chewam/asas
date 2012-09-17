@@ -6,7 +6,7 @@ Ext.define("Asas.view.team.Members", {
 
     config: {
         title: 'Members',
-        itemTpl: '{name}'
+        itemTpl: Asas.utils.Config.getTpl().member
     }
 
 });

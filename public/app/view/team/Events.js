@@ -6,7 +6,7 @@ Ext.define("Asas.view.team.Events", {
 
     config: {
         title: 'Events',
-        itemTpl: '{name} {date}'
+        itemTpl: Asas.utils.Config.getTpl().event
     }
 
 });

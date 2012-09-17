@@ -10,6 +10,9 @@ Ext.define('Asas.model.Event', {
             name: 'name',
             type: 'string'
         }, {
+            name: 'type',
+            type: 'string'
+        }, {
             name: 'date',
             type: 'date',
             dateFormat: 'c'

@@ -11,6 +11,21 @@ Ext.define("Asas.utils.Config", {
             logout: '/api/logout',
             register: '/api/register',
             teams: '/api/teams'
+        },
+        tpl: {
+            event: [
+                '<div>',
+                    '<img src="http://placehold.it/40&text=training" />',
+                '</div>',
+                '<div>{type}</div>',
+                '<div>{name} {date:date("d/m/Y")}</div>'
+            ],
+            member: [
+                '<div>',
+                    '<img src="http://placehold.it/40&text=photo" />',
+                '</div>',
+                '<div>{name} {date:date("d/m/Y")}</div>'
+            ]
         }
     },
 

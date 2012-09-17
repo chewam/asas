@@ -1,6 +1,6 @@
 exports.events = function(req, res) {
     var db = require('../utils/db')(),
-        query = 'SELECT id, name, date FROM events WHERE teamId = ?';
+        query = 'SELECT id, name, type, date FROM events WHERE teamId = ?';
 
     db.query(query, [req.params.id], function(err, rows, fields) {
         if (err) throw err;
@@ -30,6 +30,7 @@ exports.addEvent = function(req, res) {
         event = {
             name: req.body.name,
             date: req.body.date,
+            type: req.body.type,
             teamId: req.body.team_id
         };
 
