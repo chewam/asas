@@ -1,6 +1,13 @@
-exports.index = function(req, res) {
-    res.render('index', {
-        title: 'ASAS',
+exports.mobile = function(req, res) {
+    res.render('mobile', {
+        title: 'ASAS Mobile',
+        user: req.session.user
+    });
+};
+
+exports.desktop = function(req, res) {
+    res.render('desktop', {
+        title: 'ASAS Desktop',
         user: req.session.user
     });
 };
