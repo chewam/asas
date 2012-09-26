@@ -17,7 +17,9 @@ Ext.define('Asas.model.User', {
         {name: 'cashed', type: 'boolean'},
         {name: 'photo', type: 'boolean'},
         {name: 'license', type: 'boolean'},
-        {name: 'team', type: 'string'}
+        {name: 'team', type: 'string'},
+        {name: 'position', type: 'string'},
+        {name: 'active', type: 'boolean', defaultValue: true}
     ],
 
     proxy: {

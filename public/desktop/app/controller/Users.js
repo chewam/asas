@@ -20,6 +20,9 @@ Ext.define('Asas.controller.Users', {
             'asas_users button[action=add]': {
                 click: this.onAddButtonClick
             },
+            'asas_users button[action=mail]': {
+                click: this.onMailButtonClick
+            },
             'asas_users button[action=delete]': {
                 click: this.onDeleteButtonClick
             }
@@ -47,10 +50,39 @@ Ext.define('Asas.controller.Users', {
         var grid = this.getGrid(),
             store = grid.getStore(),
             selModel = grid.getSelectionModel(),
-            selection = selModel.getSelection()[0];
+            selections = selModel.getSelection();
 
-        if (selection) {
-            store.remove(selection);
+        if (selections) {
+            store.remove(selections);
+        }
+    },
+
+    showEmails: function() {
+        var emails = [],
+            grid = this.getGrid(),
+            store = grid.getStore(),
+            selModel = grid.getSelectionModel(),
+            selections = selModel.getSelection();
+
+        Ext.Array.each(selections, function(record) {
+            if (record.get('email').length) {
+                emails.push(record.get('email'));
+            }
+        });
+        emails = emails.join(', ');
+
+        if (emails.length) {
+            Ext.create('Ext.Window', {
+                title: 'Emails',
+                modal: true,
+                width: 300,
+                height: 300,
+                bodyPadding: 10,
+                autoScroll: true,
+                styleHtmlContent: true,
+                html: emails,
+                renderTo: grid.getEl()
+            }).show();
         }
     },
 
@@ -60,13 +92,17 @@ Ext.define('Asas.controller.Users', {
         this.addUser();
     },
 
+    onMailButtonClick: function() {
+        this.showEmails();
+    },
+
     onDeleteButtonClick: function() {
         Ext.Msg.show({
             scope: this,
             constrainHeader: true,
             buttons: Ext.Msg.YESNO,
             title: 'Supprimer un membre',
-            msg: 'Etes-vous sur de vouloir supprimer ce membre ?',
+            msg: 'Etes-vous sur de vouloir la selection ?',
             fn: function(response) {
                 if (response === 'yes') {
                     this.deleteUser();
