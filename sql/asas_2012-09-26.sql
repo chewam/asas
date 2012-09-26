@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.1.44)
 # Database: asas
-# Generation Time: 2012-09-16 21:53:52 +0000
+# Generation Time: 2012-09-26 01:47:38 +0000
 # ************************************************************
 
 
@@ -76,6 +76,46 @@ DROP TABLE IF EXISTS `teams`;
 CREATE TABLE `teams` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+LOCK TABLES `teams` WRITE;
+/*!40000 ALTER TABLE `teams` DISABLE KEYS */;
+
+INSERT INTO `teams` (`id`, `name`)
+VALUES
+	(1,'6 - Girls'),
+	(2,'6 - Boys'),
+	(3,'4 - Mixed');
+
+/*!40000 ALTER TABLE `teams` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table users
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `lastname` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `nationality` varchar(255) DEFAULT NULL,
+  `birthplace` varchar(255) DEFAULT NULL,
+  `birthdate` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `mobile` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `registration` tinyint(4) NOT NULL DEFAULT '0',
+  `certificate` tinyint(4) NOT NULL DEFAULT '0',
+  `check` tinyint(4) NOT NULL DEFAULT '0',
+  `cashed` tinyint(4) NOT NULL DEFAULT '0',
+  `photo` tinyint(4) NOT NULL DEFAULT '0',
+  `license` tinyint(4) NOT NULL DEFAULT '0',
+  `team` varchar(255) DEFAULT NULL,
+  `position` enum('setter','libero','middle hitter','left side hitter','right side hitter') NOT NULL DEFAULT 'left side hitter',
+  `active` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
