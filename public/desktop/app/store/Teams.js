@@ -1,22 +1,17 @@
-Ext.define('Asas.store.Users', {
+Ext.define('Asas.store.Teams', {
 
     extend: 'Ext.data.Store',
 
-    model: 'Asas.model.User',
+    model: 'Asas.model.Team',
 
-    requires: ['Asas.model.User'],
+    requires: ['Asas.model.Team'],
 
     // autoLoad: true,
 
     autoSync: true,
 
-    groupField: 'team',
-
     sorters: [{
-        property: 'team',
-        direction: 'ASC'
-    }, {
-        property: 'position',
+        property: 'name',
         direction: 'ASC'
     }],
 

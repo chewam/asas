@@ -5,5 +5,14 @@ block head
     script(type="text/javascript", src="/desktop/extjs/ext-debug.js")
     script(type="text/javascript", src="/desktop/app.js")
 
+    - if (user)
+        script
+            var _USER_ = {
+                email: '#{user.email}'
+            };
+    - else
+        script
+            var _USER_ = null;
+
 block body
-    div#grid(style="margin: 20px")
+    div#asas(style="margin: 20px")

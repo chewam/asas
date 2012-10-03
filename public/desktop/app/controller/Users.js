@@ -1,18 +1,13 @@
 Ext.define('Asas.controller.Users', {
 
-    extend: 'Ext.app.Controller',
+    extend: 'Asas.controller.Grid',
 
     views: ['Users'],
 
-    models: ['User'],
-
-    stores: ['Users'],
-
     refs: [{
         ref: 'grid',
-        autoCreate: true,
         xtype: 'asas_users',
-        selector: 'asas_users'
+        selector: 'asas asas_users'
     }],
 
     init: function() {
@@ -27,34 +22,6 @@ Ext.define('Asas.controller.Users', {
                 click: this.onDeleteButtonClick
             }
         });
-        this.renderGrid();
-    },
-
-    renderGrid: function() {
-        var grid = this.getGrid();
-
-        grid.render('grid');
-        grid.getStore().load();
-        Ext.Msg.render(grid.getEl());
-    },
-
-    addUser: function() {
-        var grid = this.getGrid(),
-            store = grid.getStore();
-
-        store.insert(0, {});
-        grid.editingPlugin.startEdit(0, 0);
-    },
-
-    deleteUser: function() {
-        var grid = this.getGrid(),
-            store = grid.getStore(),
-            selModel = grid.getSelectionModel(),
-            selections = selModel.getSelection();
-
-        if (selections) {
-            store.remove(selections);
-        }
     },
 
     showEmails: function() {
@@ -88,27 +55,8 @@ Ext.define('Asas.controller.Users', {
 
     /**********/
 
-    onAddButtonClick: function() {
-        this.addUser();
-    },
-
     onMailButtonClick: function() {
         this.showEmails();
-    },
-
-    onDeleteButtonClick: function() {
-        Ext.Msg.show({
-            scope: this,
-            constrainHeader: true,
-            buttons: Ext.Msg.YESNO,
-            title: 'Supprimer un membre',
-            msg: 'Etes-vous sur de vouloir la selection ?',
-            fn: function(response) {
-                if (response === 'yes') {
-                    this.deleteUser();
-                }
-            }
-        });
     }
 
 });

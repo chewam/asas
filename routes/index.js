@@ -7,7 +7,7 @@ exports.mobile = function(req, res) {
 
 exports.desktop = function(req, res) {
     res.render('desktop', {
-        title: 'ASAS Desktop',
+        title: 'ASAS MANAGER',
         user: req.session.user
     });
 };

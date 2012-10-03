@@ -4,6 +4,8 @@ var express = require('express'),
     user = require('./routes/user'),
     team = require('./routes/team'),
     users = require('./routes/users'),
+    teams = require('./routes/teams'),
+    events = require('./routes/events'),
     // mobile = require('./routes/mobile'),
     // desktop = require('./routes/desktop'),
     http = require('http'),
@@ -16,6 +18,15 @@ var checkSession = function(req, res, next) {
         res.send(403);
     } else {
         next();
+    }
+};
+
+var checkAdminSession = function(req, res, next) {
+    console.log('checkAdminSession', req.session.user);
+    if (req.session.user && req.session.user.admin) {
+        next();
+    } else {
+        res.send(403);
     }
 };
 
@@ -50,10 +61,22 @@ app.put('/api/teams/:id/members/:memberId', checkSession, team.join);
 app.post('/api/teams/:id/events', checkSession, team.addEvent);
 app.get('/api/teams', checkSession, team.list);
 
-app.get('/api/users', users.list);
-app.put('/api/users', users.update);
-app.post('/api/users', users.create);
-app.delete('/api/users', users.remove);
+app.post('/api/admin/login', user.adminLogin);
+
+app.get('/api/admin/users', users.list);
+app.put('/api/admin/users', users.update);
+app.post('/api/admin/users', users.create);
+app.delete('/api/admin/users', users.remove);
+
+app.get('/api/admin/teams', checkAdminSession, teams.list);
+app.put('/api/admin/teams', checkAdminSession, teams.update);
+app.post('/api/admin/teams', checkAdminSession, teams.create);
+app.delete('/api/admin/teams', checkAdminSession, teams.remove);
+
+app.get('/api/admin/events', events.list);
+app.put('/api/admin/events', events.update);
+app.post('/api/admin/events', events.create);
+app.delete('/api/admin/events', events.remove);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log("Express server listening on port " + app.get('port'));

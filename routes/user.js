@@ -5,6 +5,41 @@ exports.logout = function(req, res) {
     res.json({success: true});
 };
 
+exports.adminLogin = function(req, res) {
+    console.log('admin login', req.body);
+
+    var user,
+        crypto = require('crypto'),
+        db = require('../utils/db')(),
+        query = 'SELECT id, email, password FROM users WHERE admin = 1',
+        password = crypto.createHash('md5').update(req.body.password).digest("hex");
+
+    db.query(query, function(err, rows, fields) {
+        if (err) throw err;
+        rows.forEach(function(row) {
+            if (row.email === req.body.email && row.password === password) {
+                user = row;
+            }
+        });
+
+        if (user) {
+            req.session.user = {
+                id: user.id,
+                admin: true,
+                email: user.email
+            };
+            res.json({success: true, user: {
+                email: user.email
+            }});
+        } else {
+            res.json({success: false});
+        }
+
+    });
+
+    db.end();
+};
+
 exports.login = function(req, res) {
     console.log('login', req.body);
 
