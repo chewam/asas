@@ -9,7 +9,9 @@ module.exports = function() {
             password : config.db.password
         });
 
-    connection.connect();
+    connection.connect(function(error) {
+        console.log('mysql connection error:', error);
+    });
 
     return connection;
 };

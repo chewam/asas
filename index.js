@@ -8,10 +8,9 @@ var express = require('express'),
     events = require('./routes/events'),
     // mobile = require('./routes/mobile'),
     // desktop = require('./routes/desktop'),
-    http = require('http'),
     path = require('path');
 
-var app = express();
+var app = module.exports = express();
 
 var checkSession = function(req, res, next) {
     if (!req.session.user) {
@@ -77,7 +76,3 @@ app.get('/api/admin/events', events.list);
 app.put('/api/admin/events', events.update);
 app.post('/api/admin/events', events.create);
 app.delete('/api/admin/events', events.remove);
-
-http.createServer(app).listen(app.get('port'), function() {
-    console.log("Express server listening on port " + app.get('port'));
-});
